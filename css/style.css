@@ -5,7 +5,7 @@
     /* box-sizing: border-box; */
 }
 
-.container {
+.body {
     height: 100vh;
     width: 100%;
     
@@ -18,6 +18,7 @@
     background-repeat: no-repeat;
     background-size: 20% 40%;
     background-position: 95% 30%;
+    background-attachment: fixed;
 }
 
 #gamebox {
@@ -73,4 +74,26 @@
     font-size: 39px;
     font-weight: bold;
     font-family: 'New Tegomin', serif;
+}
+
+.modal-content
+{
+    background-color: transparent;
+}
+
+#gameover {
+    background-color: transparent;
+    color: orange;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bolder;
+    font-family: 'New Tegomin', serif;
+}
+
+#gameover button {
+    background-color: transparent;
+    color: orange;
+    border: none;
+    font-size: 1rem;
+    font-weight: bolder;
 }

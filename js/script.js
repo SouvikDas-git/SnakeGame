@@ -14,7 +14,8 @@ let snakeArr = [
 // food Object
 // let food = { x: 5, y: 7 };
 let food = { x: getRndInteger(5, c - 5), y: getRndInteger(5, r - 5) };
-
+// key array
+let keys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "w", "s", "a", "d", " "];
 
 let gamebox = document.getElementById("gamebox");
 gamebox.style.gridTemplate = "repeat(" + r + ", auto)/ repeat(" + c + ", auto)";
@@ -25,7 +26,7 @@ let hiscore = localStorage.getItem("hiscore");
 // console.log(hiscore);
 if (hiscore === null) {
     hiscore = 0;
-    localStorage.setItem("hiscore", hiscore)
+    localStorage.setItem("hiscore", hiscore);
 }
 else {
     hiscoreBox.innerHTML = "HiScore: " + hiscore;
@@ -73,6 +74,7 @@ function gameLoop() {
         score = 0;
         // alert("Game Over. Press any key to play again!");
         snakeArr = [{ x: 13, y: 15 }];
+        gameOver();
     }
 
     // display the snake
@@ -92,10 +94,11 @@ function gameLoop() {
         gamebox.appendChild(snakeElement);
 
     });
+
     // display the food
     foodElement = document.createElement('div');
     foodElement.style.gridRowStart = food.y;
-    foodElement.style.gridColumnStart = food.x
+    foodElement.style.gridColumnStart = food.x;
     foodElement.classList.add('food');
     gamebox.appendChild(foodElement);
 
@@ -106,7 +109,6 @@ function gameLoop() {
     snakeArr[0].x += inputcord.x;
     snakeArr[0].y += inputcord.y;
 
-
     // If the snake have eaten the food, increment the score and regenerate the food
     if (snakeArr[0].x == food.x && snakeArr[0].y == food.y) {
         eat.play();
@@ -116,7 +118,7 @@ function gameLoop() {
             localStorage.setItem("hiscore", hiscore);
         }
         snakeArr.unshift({ x: snakeArr[0].x + inputcord.x, y: snakeArr[0].y + inputcord.y });
-        console.log("eaten");
+        // console.log("eaten");
         // update the food position
         food = { x: getRndInteger(5, c - 5), y: getRndInteger(5, r - 5) };
     }
@@ -124,14 +126,17 @@ function gameLoop() {
     // update the score
     scoreBox.innerHTML = "Score: " + score;
     hiscoreBox.innerHTML = "HiScore: " + hiscore;
-
 }
 
 window.requestAnimationFrame(main);
 // get keyboard inputs
-window.addEventListener("keydown", (event) => {
+window.addEventListener("keydown", keyinput);
+
+function keyinput(event) {
     // var key = event.key;
-    move.play();
+    if (keys.includes(event.key)) {
+        move.play();
+    }
     console.log(event.key);
     switch (event.key) {
         case "ArrowUp":
@@ -157,4 +162,10 @@ window.addEventListener("keydown", (event) => {
         default:
             break;
     }
-});
+};
+
+function gameOver(Event) {
+    
+    window.removeEventListener("keydown", keyinput);
+    $("#gameOverModal").modal('show');
+}
