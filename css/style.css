@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -7,12 +8,16 @@
 .container {
     height: 100vh;
     width: 100%;
-    /* border: 2px solid red; */
-
+    
     display: flex;
     justify-content: center;
     align-items: center;
-
+    
+    background: url("../img/297541.svg");
+    /* background-color: orange; */
+    background-repeat: no-repeat;
+    background-size: 20% 40%;
+    background-position: 95% 30%;
 }
 
 #gamebox {
@@ -21,14 +26,12 @@
     display: grid;
     background-color: #373838;
     border-radius: 5px;
-
     /* grid-template-rows: repeat(38, auto);
     grid-template-columns: repeat(38, auto); */
     /* outline: 25px solid blue; */
     box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.68);
     -webkit-box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.68);
     -moz-box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.68);
-
 }
 
 .head {
@@ -38,7 +41,6 @@
 
 .snake {
     position: relative;
-
     background-color: #FAE042;
     box-shadow: 0px 0px 40px #FAE042;
 }
@@ -52,12 +54,7 @@
     background-image: url("../img/apple.png");
     background-repeat: no-repeat;
     background-size: contain;
-
     transform: scale(1.3);
-
-    /* background: linear-gradient(red, purple); */
-    /* border: .25vmin solid black; */
-    /* border-radius: 8px; */
 }
 
 #scoreBox {
@@ -66,7 +63,7 @@
     right: 200px;
     font-size: 39px;
     font-weight: bold;
-    /* font-family: 'New Tegomin', serif; */
+    font-family: 'New Tegomin', serif;
 }
 
 #hiscoreBox {
@@ -75,5 +72,5 @@
     right: 140px;
     font-size: 39px;
     font-weight: bold;
-    /* font-family: 'New Tegomin', serif; */
+    font-family: 'New Tegomin', serif;
 }
