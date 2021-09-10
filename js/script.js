@@ -1,11 +1,11 @@
-const eat = new Audio('music/eat.wav');
-const gameover = new Audio('music/gameover.wav');
+const eat = new Audio('music/eat.mp3');
+const gameover = new Audio('music/gameover.mp3');
 const move = new Audio('music/move.mp3');
 
 let r = 40, c = 40;
 let inputcord = { x: 0, y: 0 };
 let lastPaintTime = 0;
-let speed = 10;
+let speed = 13;
 let score = 0;
 // snake Array
 let snakeArr = [
@@ -53,13 +53,13 @@ function isCollide(snake) {
     // If you bump into yourself 
     for (let i = 1; i < snakeArr.length; i++) {
         if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) {
-            gameover.play();
+            // gameover.play();
             return true;
         }
     }
     // If you bump into the wall
     if (snake[0].x >= c + 1 || snake[0].x <= 0 || snake[0].y >= r + 1 || snake[0].y <= 0) {
-        gameover.play();
+        // gameover.play();
         return true;
     }
 
@@ -69,11 +69,11 @@ function isCollide(snake) {
 function gameLoop() {
     // if the snake is Collide
     if (isCollide(snakeArr)) {
+        // gameover.play();
         inputcord = { x: 0, y: 0 };
-        gameover.play();
-        score = 0;
-        // alert("Game Over. Press any key to play again!");
-        snakeArr = [{ x: 13, y: 15 }];
+        snakeArr = [
+            { x: getRndInteger(5, c - 5), y: getRndInteger(5, r - 5) }
+        ];
         gameOver();
     }
 
@@ -164,8 +164,18 @@ function keyinput(event) {
     }
 };
 
-function gameOver(Event) {
-    
+function gameOver() {
     window.removeEventListener("keydown", keyinput);
     $("#gameOverModal").modal('show');
+    // gameover.pause();
+    gameover.play();
+    return;
+}
+
+function RestartGame() {
+    window.addEventListener('keydown', keyinput);
+    score = 0;
+    snakeArr = [
+        { x: getRndInteger(5, c - 5), y: getRndInteger(5, r - 5) }
+    ];
 }
