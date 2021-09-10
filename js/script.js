@@ -15,7 +15,7 @@ let snakeArr = [
 // let food = { x: 5, y: 7 };
 let food = { x: getRndInteger(5, c - 5), y: getRndInteger(5, r - 5) };
 // key array
-let keys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "w", "s", "a", "d", " "];
+let keys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "w", "s", "a", "d", "W", "S", "A", "D"];
 
 let gamebox = document.getElementById("gamebox");
 gamebox.style.gridTemplate = "repeat(" + r + ", auto)/ repeat(" + c + ", auto)";
@@ -139,21 +139,29 @@ function keyinput(event) {
     }
     console.log(event.key);
     switch (event.key) {
+        case "w":
+        case "W":
         case "ArrowUp":
             inputcord.x = 0;
             inputcord.y = -1;
             break;
 
+        case "s":
+        case "S":
         case "ArrowDown":
             inputcord.x = 0;
             inputcord.y = 1;
             break;
 
+        case "a":
+        case "A":
         case "ArrowLeft":
             inputcord.x = -1;
             inputcord.y = 0;
             break;
 
+        case "d":
+        case "D":
         case "ArrowRight":
             inputcord.x = 1;
             inputcord.y = 0;

@@ -8,11 +8,9 @@
 .content {
     height: 100vh;
     width: 100%;
-    
     display: flex;
     justify-content: center;
     align-items: center;
-    
     background: url("../img/297541.svg");
     /* background-color: orange; */
     background-repeat: no-repeat;
@@ -76,8 +74,7 @@
     font-family: 'New Tegomin', serif;
 }
 
-.modal-content
-{
+.modal-content {
     background-color: transparent;
     border: none;
 }
@@ -91,10 +88,27 @@
     font-family: 'New Tegomin', serif;
 }
 
+#gameover #text {
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: gameoverAnima 0.8s linear infinite alternate forwards;
+}
+
 #gameover button {
     background-color: transparent;
     color: orange;
     border: none;
     font-size: 1rem;
     font-weight: bolder;
+}
+
+@keyframes gameoverAnima {
+    0% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.9);
+    }
 }
