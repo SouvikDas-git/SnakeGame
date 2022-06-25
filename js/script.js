@@ -5,7 +5,7 @@ const move = new Audio('music/move.mp3');
 let r = 40, c = 40;
 let inputcord = { x: 0, y: 0 };
 let lastPaintTime = 0;
-let speed = 4;
+let speed = 13;
 let score = 0;
 // snake Array
 let snakeArr = [
